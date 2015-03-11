@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="local-unit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Department</class>
+		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Employee</class>
+		<properties>
+		<!-- H2, EclipseLink, see http://wiki.eclipse.org/EclipseLink/Examples/JPA/GlassFishV2_Web_Tutorial -->
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testJpaDB" />
+			<!-- EclipseLINK -->
+			<property name="eclipselink.logging.level" value="INFO" />
+			<property name="eclipselink.ddl-generation" value="create-tables"/>
+		</properties>
+	</persistence-unit>
+</persistence>
