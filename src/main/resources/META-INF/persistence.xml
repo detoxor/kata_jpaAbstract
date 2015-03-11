@@ -10,8 +10,8 @@
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.BaseDomain</class>
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Person</class>
 		<properties>
-			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:/tmp/testdb" />
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /><!-- org.h2.Driver, org.hsqldb.jdbcDriver -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb" /><!-- jdbc:h2:/tmp/testdb, jdbc:hsqldb:/tmp/testdb -->
 			<!-- OPENJPA -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
