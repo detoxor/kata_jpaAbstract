@@ -19,7 +19,7 @@ public class HibernateLogSqlStrategy implements TxLogSqlStrategy
 	@Override
 	public String getSqlString(TypedQuery<?> query, EntityManager em) 
 	{
-		return query.unwrap(org.hibernate.Query.class).getQueryString();
+		return "N/A"; //query.unwrap(org.hibernate.Query.class).getQueryString();
 	}
 
 }

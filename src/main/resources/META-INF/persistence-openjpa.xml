@@ -11,7 +11,7 @@
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Person</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" /><!-- org.h2.Driver, org.hsqldb.jdbcDriver -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb" /><!-- jdbc:h2:/tmp/testdb, jdbc:hsqldb:/tmp/testdb, jdbc:hsqldb:hsql://localhost:9001/testdb -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:testdb" /><!-- jdbc:h2:/tmp/testdb, jdbc:hsqldb:/tmp/testdb -->
 			<!-- OPENJPA -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
@@ -22,7 +22,8 @@
 			<!-- property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
 			<property name="openjpa.jdbc.SchemaFactory" value="native(foreignKeys=true)" />
 			<property name="openjpa.jdbc.MappingDefaults" value="ForeignKeyDeleteAction=restrict, JoinForeignKeyDeleteAction=restrict"/-->
-			
+		
+		<!-- -javaagent:/media/data/tomascejka/.Private/Repositories/.m2/org/apache/openjpa/openjpa/2.3.0/openjpa-2.3.0.jar -->	
 		</properties>
 	</persistence-unit>
 </persistence>
