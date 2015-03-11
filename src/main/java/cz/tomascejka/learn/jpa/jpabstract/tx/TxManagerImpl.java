@@ -75,4 +75,8 @@ public class TxManagerImpl implements TxManager
 	{
 		return em.getCriteriaBuilder();
 	}
+
+	public void flush() {
+		em.flush();
+	}
 }

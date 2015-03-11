@@ -17,6 +17,7 @@ public class Department extends BaseDomain
 {
 	@Id
 	@GeneratedValue
+	@Column(name="ID_DEPARTMENT", nullable=false)
 	private Long id;
 
 	@Column(name="NAME", nullable=false)

@@ -6,7 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cz.tomascejka.learn.jpa.jpabstract.dao.DepartmentDao;
+import cz.tomascejka.learn.jpa.jpabstract.dao.EmployeeDao;
 import cz.tomascejka.learn.jpa.jpabstract.domain.Department;
+import cz.tomascejka.learn.jpa.jpabstract.domain.Employee;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManagerImpl;
 
 public class App {
@@ -33,19 +35,21 @@ public class App {
 		TxManagerImpl tm = new TxManagerImpl(PERSISTENCE_UNIT_NAME);
 		
 		DepartmentDao departmentDao = new DepartmentDao();
+		EmployeeDao employeeDao = new EmployeeDao();
 		departmentDao.setTransactionManager(tm);
+		employeeDao.setTransactionManager(tm);
 		
 		tm.open();
 		
 		String name = "tomas";
-		LOG.info("Persist entity department with name='{}'", name);
 		Department d = new Department("tomas");
 		departmentDao.save(d);
-		LOG.info("Persist entity department with name='{}'", "kaja");
 		Department d2 = new Department("kaja");
 		departmentDao.save(d2);
 		
-		LOG.info("Find entity department with name='{}'", name);
+		Employee tomasEmpl = new Employee("Tomas Cejka", d);
+		employeeDao.save(tomasEmpl);
+		
 		Department domain = departmentDao.findByName(name);
 		LOG.info("Entity department founded data={}", domain);
 		

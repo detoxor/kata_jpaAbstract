@@ -7,7 +7,7 @@
 	</appender>
 
    <logger name="org.hibernate" level="ERROR"/>
-   <logger name="org.eclipse.persistence" level="ERROR"/>
+   <logger name="org.eclipse.persistence" level="INFO"/>
    <logger name="cz.tomascejka.learn.jpa.jpabstract.tx" level="ERROR"/>
 
 	<root level="debug">

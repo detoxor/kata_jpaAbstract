@@ -19,6 +19,7 @@ public abstract class BaseDao<E extends BaseDomain>
 {
 	private static final Logger LOG = LoggerFactory.getLogger(BaseDao.class);
 	private CriteriaBuilder cb;
+	private boolean logTx = true;
 		
 	/**
 	 * Insert or Update storage operation
@@ -34,6 +35,10 @@ public abstract class BaseDao<E extends BaseDomain>
 			public Long execute(EntityManager em, Object... parameters)
 					throws Exception 
 			{
+				if(logTx)
+				{
+					LOG.info("Persist domain, {}", domain);
+				}
 				em.persist(domain);
 				return domain.getId();
 			}
@@ -55,6 +60,10 @@ public abstract class BaseDao<E extends BaseDomain>
 			public Boolean execute(EntityManager em, Object... parameters)
 					throws Exception 
 			{
+				if(logTx)
+				{
+					LOG.info("Remove domain {}", domain);
+				}
 				em.remove(domain);
 				return true;
 			}
@@ -73,6 +82,7 @@ public abstract class BaseDao<E extends BaseDomain>
 				try 
 				{
 					Query query = em.createQuery(criteriaQuery);
+					LOG.info("Single result query={}", query.toString());
 					return (E) query.getSingleResult();
 				}
 				catch (NoResultException e)

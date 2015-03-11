@@ -1,5 +1,6 @@
 package cz.tomascejka.learn.jpa.jpabstract.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,8 +16,11 @@ public class Person extends BaseDomain
 {
 	@Id
 	@GeneratedValue
+	@Column(name="ID_PERSON", nullable=false)
 	private Long id;
+	@Column(name="FIRST_NAME")
 	private String firstName;
+	@Column(name="LAST_NAME")
 	private String lastName;
 
 	public Person() {
