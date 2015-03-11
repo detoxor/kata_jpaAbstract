@@ -11,7 +11,6 @@ import cz.tomascejka.learn.jpa.jpabstract.dao.EmployeeDao;
 import cz.tomascejka.learn.jpa.jpabstract.domain.Department;
 import cz.tomascejka.learn.jpa.jpabstract.domain.Employee;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManagerImpl;
-import cz.tomascejka.learn.jpa.jpabstract.tx.log.EclipseLinkLogSqlStrategy;
 import cz.tomascejka.learn.jpa.jpabstract.tx.log.OpenJpaLogSqlStrategy;
 
 public class App {
