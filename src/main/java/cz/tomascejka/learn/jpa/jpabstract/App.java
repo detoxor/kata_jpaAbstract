@@ -36,7 +36,7 @@ public class App {
 	private static void useEnterpriseApproach()
 	{
 		TxManagerImpl tm = new TxManagerImpl(PERSISTENCE_UNIT_NAME);
-		tm.setSqlLogStrategy(new EclipseLinkLogSqlStrategy());//vendor-specific
+		tm.setSqlLogStrategy(new OpenJpaLogSqlStrategy());//vendor-specific
 		
 		DepartmentDao departmentDao = new DepartmentDao();
 		EmployeeDao employeeDao = new EmployeeDao();

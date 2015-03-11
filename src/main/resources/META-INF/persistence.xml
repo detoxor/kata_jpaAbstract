@@ -11,7 +11,7 @@
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Person</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testJpaDB" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:/tmp/testJpaDB" />
 			<!-- OPENJPA -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
