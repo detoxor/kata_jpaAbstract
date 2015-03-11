@@ -11,11 +11,11 @@
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Person</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testJpaDB" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:/tmp/testdb" />
 			<!-- OPENJPA -->
 			<property name="javax.persistence.jdbc.user" value="sa" />
 			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="openjpa.Log"  value="DefaultLevel=ERROR,SQL=ERROR,Tool=INFO" />
+			<property name="openjpa.Log"  value="DefaultLevel=INFO,SQL=ERROR,Tool=INFO" />
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(foreignKeys=true,schemaAction='dropDB,add')"/>
 			
 			<!-- if you want create foreign keys, use the following lines -->
