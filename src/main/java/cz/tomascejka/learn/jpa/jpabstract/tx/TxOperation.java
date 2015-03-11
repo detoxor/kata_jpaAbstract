@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
  *
  * @param <E> data type result type
  */
-public interface TransactionOperation<E> 
+public interface TxOperation<E> 
 {
 	/**
 	 * Perform storage operation via API {@link EntityManager}. Operation can be parametrized.

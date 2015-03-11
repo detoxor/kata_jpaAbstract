@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import cz.tomascejka.learn.jpa.jpabstract.domain.Department;
-import cz.tomascejka.learn.jpa.jpabstract.tx.TransactionOperation;
+import cz.tomascejka.learn.jpa.jpabstract.tx.TxOperation;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManagerImpl;
 
 public class DirectApproach 
@@ -36,7 +36,7 @@ public class DirectApproach
 	 *
 	 */
 	private static final class SaveDepartment implements
-			TransactionOperation<Long> 
+			TxOperation<Long> 
 	{
 		public Long execute(EntityManager em, Object... parameters) 
 		{
@@ -62,7 +62,7 @@ public class DirectApproach
 	 *
 	 */
 	private static final class DeleteDepartment implements
-			TransactionOperation<Boolean> 
+			TxOperation<Boolean> 
 	{
 		public Boolean execute(EntityManager em, Object... parameters) 
 		{
@@ -79,7 +79,7 @@ public class DirectApproach
 	 *
 	 */
 	private static final class FetchAllDepartments implements
-			TransactionOperation<List<Department>> 
+			TxOperation<List<Department>> 
 	{
 		@SuppressWarnings("unchecked")
 		public List<Department> execute(EntityManager em, Object... parameters)

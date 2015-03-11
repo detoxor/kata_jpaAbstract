@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ public class TxManagerImpl implements TxManager
 	private static final Logger LOG = LoggerFactory.getLogger(TxManagerImpl.class);
 	private EntityManager em;
 	private String entities;
+	private TxLogSqlStrategy sqlLogStrategy;
 	
 	public TxManagerImpl(String entities) 
 	{
@@ -36,7 +38,7 @@ public class TxManagerImpl implements TxManager
 
 	@Override
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public <T> T processOperation(TransactionOperation operation, Object... parameters)
+	public <T> T processOperation(TxOperation operation, Object... parameters)
 	{
 		LOG.info("Processing transactionally operation: {}", operation.getClass().getSimpleName());
 		EntityTransaction tx = null;
@@ -76,7 +78,18 @@ public class TxManagerImpl implements TxManager
 		return em.getCriteriaBuilder();
 	}
 
-	public void flush() {
-		em.flush();
+	@SuppressWarnings("rawtypes")
+	@Override
+	public String getSql(TypedQuery query) 
+	{
+		if(sqlLogStrategy == null) 
+		{
+			return "N/A";
+		}
+		return sqlLogStrategy.getSqlString(query, em);
+	}
+	
+	public void setSqlLogStrategy(TxLogSqlStrategy sqlLogStrategy) {
+		this.sqlLogStrategy = sqlLogStrategy;
 	}
 }

@@ -11,6 +11,8 @@ import cz.tomascejka.learn.jpa.jpabstract.dao.EmployeeDao;
 import cz.tomascejka.learn.jpa.jpabstract.domain.Department;
 import cz.tomascejka.learn.jpa.jpabstract.domain.Employee;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManagerImpl;
+import cz.tomascejka.learn.jpa.jpabstract.tx.log.EclipseLinkLogSqlStrategy;
+import cz.tomascejka.learn.jpa.jpabstract.tx.log.OpenJpaLogSqlStrategy;
 
 public class App {
 
@@ -34,6 +36,7 @@ public class App {
 	private static void useEnterpriseApproach()
 	{
 		TxManagerImpl tm = new TxManagerImpl(PERSISTENCE_UNIT_NAME);
+		tm.setSqlLogStrategy(new EclipseLinkLogSqlStrategy());//vendor-specific
 		
 		DepartmentDao departmentDao = new DepartmentDao();
 		EmployeeDao employeeDao = new EmployeeDao();

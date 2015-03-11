@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -12,7 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cz.tomascejka.learn.jpa.jpabstract.domain.BaseDomain;
-import cz.tomascejka.learn.jpa.jpabstract.tx.TransactionOperation;
+import cz.tomascejka.learn.jpa.jpabstract.tx.TxOperation;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManager;
 
 public abstract class BaseDao<E extends BaseDomain> 
@@ -30,7 +31,7 @@ public abstract class BaseDao<E extends BaseDomain>
 	 */
 	public final Long save(final E domain)
 	{
-		Long id = tm.processOperation(new TransactionOperation<Long>() 
+		Long id = tm.processOperation(new TxOperation<Long>() 
 		{
 			public Long execute(EntityManager em, Object... parameters)
 					throws Exception 
@@ -55,7 +56,7 @@ public abstract class BaseDao<E extends BaseDomain>
 	 */	
 	public final boolean remove(final E domain)
 	{
-		Boolean state = tm.processOperation(new TransactionOperation<Boolean>() 
+		Boolean state = tm.processOperation(new TxOperation<Boolean>() 
 		{
 			public Boolean execute(EntityManager em, Object... parameters)
 					throws Exception 
@@ -74,15 +75,16 @@ public abstract class BaseDao<E extends BaseDomain>
 	@SuppressWarnings("unchecked")
 	protected final E fetchOne(final CriteriaQuery<E> criteriaQuery)
 	{
-		E domain = tm.processOperation(new TransactionOperation<E>() 
+		E domain = tm.processOperation(new TxOperation<E>() 
 		{
+			@SuppressWarnings("rawtypes")
 			public E execute(EntityManager em, Object... parameters)
 					throws Exception 
 			{
 				try 
 				{
-					Query query = em.createQuery(criteriaQuery);
-					LOG.info("Single result query={}", query.toString());
+					TypedQuery query = em.createQuery(criteriaQuery);
+					LOG.info("Single result query={}", tm.getSql(query));
 					return (E) query.getSingleResult();
 				}
 				catch (NoResultException e)
@@ -97,7 +99,7 @@ public abstract class BaseDao<E extends BaseDomain>
 	
 	protected final List<E> fetchAll(final CriteriaQuery<E> criteriaQuery)
 	{
-		List<E> domains = tm.processOperation(new TransactionOperation<List<E>>() 
+		List<E> domains = tm.processOperation(new TxOperation<List<E>>() 
 		{
 			@SuppressWarnings("unchecked")
 			public List<E> execute(EntityManager em, Object... parameters)

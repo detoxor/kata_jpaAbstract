@@ -1,5 +1,6 @@
 package cz.tomascejka.learn.jpa.jpabstract.tx;
 
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -22,7 +23,7 @@ public interface TxManager
 	 * @return operation result
 	 */
 	@SuppressWarnings("rawtypes")
-	public <T> T processOperation(TransactionOperation operation, Object... parameters);
+	public <T> T processOperation(TxOperation operation, Object... parameters);
 	
 	/**
 	 * Close dialog between data storage and client's entity manager
@@ -33,4 +34,6 @@ public interface TxManager
 	 * @return builder for specific (non-trivial) queries via {@link CriteriaQuery} interface.
 	 */
 	CriteriaBuilder getCriteriaBuilder();
+
+	String getSql(@SuppressWarnings("rawtypes") TypedQuery query);
 }

@@ -11,7 +11,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table
+@Table(name="PERSON")
 public class Person extends BaseDomain 
 {
 	@Id
