@@ -7,12 +7,14 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Department</class>
 		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Employee</class>
+		<class>cz.tomascejka.learn.jpa.jpabstract.domain.BaseDomain</class>
+		<class>cz.tomascejka.learn.jpa.jpabstract.domain.Person</class>
 		<properties>
 		<!-- H2, EclipseLink, see http://wiki.eclipse.org/EclipseLink/Examples/JPA/GlassFishV2_Web_Tutorial -->
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
-			<!-- MEMORY  :dobry pro testy       jdbc:h2:mem:testJpaDB -->
+			<!-- MEMORY  :dobry pro testy       jdbc:h2:mem:testDB -->
 			<!-- EMBEDDED:neni vhodny pro testy jdbc:h2:/tmp/testdb -->
-			<property name="javax.persistence.jdbc.url" value="jdbc:h2:/tmp/testdb" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb" />
 			<property name="javax.persistence.jdbc.user" value="sa"/>
 			<property name="javax.persistence.jdbc.password" value=""/>
 			<!-- EclipseLINK -->

@@ -10,8 +10,6 @@
 		<logback.version>1.1.2</logback.version>
 		<junit.version>4.11</junit.version>
 		<java.version>1.7</java.version>
-		<hibernate.core.version>4.3.8.Final</hibernate.core.version><!-- 4.3.8.Final -->
-		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
 		<eclipselink.groupid>org.eclipse.persistence</eclipselink.groupid>
 		<eclipselink.version>2.4.2</eclipselink.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -59,23 +57,6 @@
 		</dependency>
 
 		<!-- ORMs -->
-		<!-- Hibernate -->
-		<!-- dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.core.version}</version>
-		</dependency-->
-		<!-- dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>${hibernate.jpa.version}</version>
-		</dependency-->
-
 		<!-- EclipseLink -->
 		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
@@ -87,31 +68,5 @@
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>${eclipselink.version}</version>
 		</dependency>
-		
-		<!-- TopLINK -->
-		<!-- dependency>
-			<groupId>toplink.essentials</groupId>
-			<artifactId>toplink-essentials-agent</artifactId>
-			<version>2.1-60f</version>
-		</dependency>
-		<dependency>
-			<groupId>toplink.essentials</groupId>
-			<artifactId>toplink-essentials</artifactId>
-			<version>2.1-60f</version>
-		</dependency-->
-		<!-- dependency>
-			<groupId>com.oracle.toplink</groupId>
-			<artifactId>javax.persistence</artifactId>
-			<version>12.1.2-0-0</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.oracle.toplink</groupId>
-			<artifactId>eclipselink</artifactId>
-			<version>12.1.2-0-0</version>
-			<scope>provided</scope>
-		</dependency-->		
-
-
 	</dependencies>
 </project>
