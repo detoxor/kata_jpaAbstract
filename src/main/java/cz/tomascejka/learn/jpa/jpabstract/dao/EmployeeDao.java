@@ -15,10 +15,13 @@ public class EmployeeDao extends BaseDao<Employee>
 	{
 		CriteriaBuilder cb = getQueryBuilder();
 		CriteriaQuery<Employee> q = cb.createQuery(Employee.class);
-		Root<Employee> c = q.from(Employee.class);
 		
-		q.select(c);// select klauzule
-		q.where(cb.equal(c.get("name"), name));// where e.name=:n
+		// From
+		Root<Employee> c = q.from(Employee.class);
+		// Select 
+		q.select(c);
+		// where e.name=:n
+		q.where(cb.equal(c.get("name"), name));
 		
 		return fetchOne(q);
 	}

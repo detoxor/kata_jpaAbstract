@@ -1,5 +1,6 @@
 package cz.tomascejka.learn.jpa.jpabstract;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -51,6 +52,7 @@ public class App {
 		employeeDao.save(tomasEmpl);
 		
 		Department domain = departmentDao.findByName(name);
+		domain.setEmployees(Arrays.asList(employeeDao.findByName("Tomas Cejka")));
 		LOG.info("Entity department founded data={}", domain);
 		
 		LOG.info("Find all existing department entities");
