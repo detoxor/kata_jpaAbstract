@@ -10,7 +10,13 @@ import org.eclipse.persistence.sessions.DatabaseRecord;
 import org.eclipse.persistence.sessions.Session;
 
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxLogSqlStrategy;
-
+/**
+ * Logovani SQL dotazu pro EclipseLink, viz. odkaz nize.
+ * 
+ * @author tomas.cejka
+ *
+ * @see http://wiki.eclipse.org/EclipseLink/FAQ/JPA#How_to_get_the_SQL_for_a_Query.3F
+ */
 public class EclipseLinkLogSqlStrategy implements TxLogSqlStrategy {
 
 	@SuppressWarnings("rawtypes")
