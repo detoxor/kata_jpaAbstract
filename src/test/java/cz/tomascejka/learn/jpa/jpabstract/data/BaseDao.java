@@ -1,4 +1,4 @@
-package cz.tomascejka.learn.jpa.jpabstract.dao;
+package cz.tomascejka.learn.jpa.jpabstract.data;
 
 import java.util.List;
 
@@ -12,9 +12,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import cz.tomascejka.learn.jpa.jpabstract.domain.BaseDomain;
-import cz.tomascejka.learn.jpa.jpabstract.tx.TxOperation;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManager;
+import cz.tomascejka.learn.jpa.jpabstract.tx.TxOperation;
 
 public abstract class BaseDao<E extends BaseDomain> 
 {
@@ -66,6 +65,26 @@ public abstract class BaseDao<E extends BaseDomain>
 					LOG.info("Remove domain {}", domain);
 				}
 				em.remove(domain);
+				return true;
+			}
+		});
+		return state == null ? false : state.booleanValue();
+	}
+	
+	public final boolean removeAll(final Class<E> class1)
+	{
+		Boolean state = tm.processOperation(new TxOperation<Boolean>() 
+		{
+			public Boolean execute(EntityManager em, Object... parameters)
+					throws Exception 
+			{
+				String clazzName = class1.getSimpleName();
+				if(logTx)
+				{
+					LOG.info("Remove all domains from ", clazzName);
+				}
+				//TODO [cejka] jde to lip??
+				em.createQuery("DELETE FROM "+clazzName).executeUpdate();
 				return true;
 			}
 		});

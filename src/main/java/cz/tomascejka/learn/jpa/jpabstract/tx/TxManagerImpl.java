@@ -37,8 +37,7 @@ public class TxManagerImpl implements TxManager
 	}
 
 	@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public <T> T processOperation(TxOperation operation, Object... parameters)
+	public <T> T processOperation(TxOperation<T> operation, Object... parameters)
 	{
 		LOG.info("Processing transactionally operation: {}", operation.getClass().getSimpleName());
 		EntityTransaction tx = null;

@@ -22,8 +22,7 @@ public interface TxManager
 	 * 
 	 * @return operation result
 	 */
-	@SuppressWarnings("rawtypes")
-	public <T> T processOperation(TxOperation operation, Object... parameters);
+	public <T> T processOperation(TxOperation<T> operation, Object... parameters);
 	
 	/**
 	 * Close dialog between data storage and client's entity manager

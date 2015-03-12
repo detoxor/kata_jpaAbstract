@@ -1,4 +1,4 @@
-package cz.tomascejka.learn.jpa.jpabstract.domain;
+package cz.tomascejka.learn.jpa.jpabstract.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,10 +1,8 @@
-package cz.tomascejka.learn.jpa.jpabstract.dao;
+package cz.tomascejka.learn.jpa.jpabstract.data;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import cz.tomascejka.learn.jpa.jpabstract.domain.Employee;
 
 public class EmployeeDao extends BaseDao<Employee> 
 {
