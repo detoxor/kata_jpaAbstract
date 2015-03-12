@@ -28,11 +28,11 @@ public abstract class BaseDao<E extends BaseDomain>
 	 * 
 	 * @return primaryKey of modified/new entity
 	 */
-	public final Long save(final E domain)
+	public final E save(final E domain)
 	{
-		Long id = tm.processOperation(new TxOperation<Long>() 
+		E id = tm.processOperation(new TxOperation<E>() 
 		{
-			public Long execute(EntityManager em, Object... parameters)
+			public E execute(EntityManager em, Object... parameters)
 					throws Exception 
 			{
 				if(logTx)
@@ -40,7 +40,7 @@ public abstract class BaseDao<E extends BaseDomain>
 					LOG.info("Persist domain, {}", domain);
 				}
 				em.persist(domain);
-				return domain.getId();
+				return domain;
 			}
 		});
 		return id;

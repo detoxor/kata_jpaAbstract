@@ -37,25 +37,26 @@ public class DepartmentDaoTest
 	public void testInsert()
 	{
 		/* Insert a record */
-		Department d = new Department("krabathor");
-		testedObject.save(d);
+		String name = "krabathor";
+		Department actual = testedObject.save(new Department(name));
 		
-		Assert.assertFalse("New entities cannot have empty primarKey", d.getId() == null);
+		Assert.assertFalse("New entities cannot have empty primarKey", actual.getId() == null);
+		Assert.assertEquals(name, actual.getName());
 	}
 	
 	@Test
 	public void testUpdate()
 	{
 		// priprava entity pro test
-		String name = "dibraborothar";
-		testedObject.save(new Department(name));
+		Department item = testedObject.save(new Department("dibraborothar"));
 		
 		/* TEST Update a record */
-		Department du = testedObject.findByName(name);
-		du.setName("kaja");
-		testedObject.save(du);
-		Department actual = testedObject.findByName("kaja");
+		String name = "kaja";
+		item.setName(name);
+		Department actual = testedObject.save(item);
+		
 		Assert.assertNotNull(actual);
+		Assert.assertEquals(name, actual.getName());
 	}
 	
 	@Test
