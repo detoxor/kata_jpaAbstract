@@ -1,6 +1,5 @@
 package cz.tomascejka.learn.jpa.jpabstract;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -10,7 +9,6 @@ import org.junit.Test;
 
 import cz.tomascejka.learn.jpa.jpabstract.data.Department;
 import cz.tomascejka.learn.jpa.jpabstract.data.DepartmentDao;
-import cz.tomascejka.learn.jpa.jpabstract.data.Employee;
 import cz.tomascejka.learn.jpa.jpabstract.data.EmployeeDao;
 import cz.tomascejka.learn.jpa.jpabstract.tx.TxManagerImpl;
 import cz.tomascejka.learn.jpa.jpabstract.tx.log.EclipseLinkLogSqlStrategy;
@@ -20,6 +18,7 @@ public class DepartmentDaoTest
 	private static final String PERSISTENCE_UNIT_NAME = "local-unit";
 	private TxManagerImpl tm;
 	private DepartmentDao testedObject;
+	@SuppressWarnings("unused")
 	private EmployeeDao employeeDao;
 	
 	@Before
