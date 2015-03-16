@@ -83,7 +83,7 @@ public abstract class BaseDao<E extends BaseDomain>
 				{
 					LOG.info("Remove all domains from ", clazzName);
 				}
-				//TODO [cejka] jde to lip??
+				//TODO [cejka] jde to lip?? .. jojo jde, ale az od JPA v2.1, kde je criteria api i pro delete
 				em.createQuery("DELETE FROM "+clazzName).executeUpdate();
 				return true;
 			}
